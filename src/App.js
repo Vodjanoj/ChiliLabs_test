@@ -1,16 +1,17 @@
-import ProductList from "./components/Products/ProductList";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import ProductList from "./components/Products/ProductList";
+import Layout from "./components/Layout/Layout";
+import ProductCard from "./components/Products/ProductCard";
+import fetchProducts from "./components/Utils/fetchProducts";
 
 function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch(
-        "https://run.mocky.io/v3/b54fe93f-f5a1-426b-a76c-e43d246901fd"
-      );
+    const loadAllProducts = async () => {
+      const result = await fetchProducts();
 
-      const result = await response.json();
       const transformedProducts = result.products.map((productData) => {
         return {
           id: productData.id,
@@ -22,13 +23,16 @@ function App() {
       setProducts(transformedProducts);
     };
 
-    fetchProducts();
+    loadAllProducts();
   }, []);
 
   return (
-    <div className="App">
-      <ProductList products={products} />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<ProductList products={products} />} />
+        <Route path="/card/:productId" element={<ProductCard />} />
+      </Routes>
+    </Layout>
   );
 }
 
