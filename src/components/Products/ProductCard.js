@@ -21,20 +21,21 @@ const ProductCard = () => {
     filterProductDetailsById();
   }, [productId]);
 
-  if (productsDetails) {
-    const { name, price, category, description } = productsDetails;
-
-    return (
-      <>
-        <div>{category}</div>
-        <div>{name}</div>
-        <div>{price}</div>
-        <div>{description}</div>
-      </>
-    );
-  } else {
-    return <div>Loading</div>;
-  }
+  const { category, name, price, description } = productsDetails || {};
+  return (
+    <>
+      {productsDetails ? (
+        <>
+          <div>{category}</div>
+          <div>{name}</div>
+          <div>{price}</div>
+          <div>{description}</div>
+        </>
+      ) : (
+        <div>Loading..</div>
+      )}
+    </>
+  );
 };
 
 export default ProductCard;
