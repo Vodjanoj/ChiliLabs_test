@@ -7,10 +7,10 @@ const ProductListWrapper = styled.div`
   grid-gap: 50px 200px;
 `;
 
-const ProductList = ({ products }) => {
+const ProductList = ({ currentProducts }) => {
   return (
     <ProductListWrapper>
-      {products.map((item, index) => (
+      {currentProducts.map((item, index) => (
         <ProductItem
           key={item.id + index}
           id={item.id}

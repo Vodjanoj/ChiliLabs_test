@@ -1,9 +1,14 @@
 import ProductList from "./ProductList";
-
-const Products = ({ products }) => {
+import Pagination from "./Pagination";
+const Products = ({ currentProducts, products, productsPerPage, onPaginate }) => {
   return (
     <>
-      <ProductList products={products} />
+      <ProductList currentProducts={currentProducts} />
+      <Pagination
+        products={products.length}
+        productsPerPage={productsPerPage}
+        onPaginate={onPaginate}
+      />
     </>
   );
 };
