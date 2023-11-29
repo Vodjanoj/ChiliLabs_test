@@ -10,7 +10,7 @@ function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(6);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const loadAllProducts = async () => {
@@ -21,6 +21,7 @@ function App() {
           id: productData.id,
           name: productData.name,
           price: productData.price,
+          currency: productData.currency,
           category: productData.category,
         };
       });
@@ -34,35 +35,39 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log('products.length', products.length)
     if (query || products.length > 0) {
-      setTimeout(() => {
-        const filteredItems = products.filter((product) =>
-          product.name.toLowerCase().includes(query.toLowerCase())
+      const identifier = setTimeout(() => {
+        const filteredItems = products.filter(
+          (product) =>
+            product.category.toLowerCase().includes(query.toLowerCase()) ||
+            product.name.toLowerCase().includes(query.toLowerCase())
         );
         setFilteredProducts(filteredItems);
-       
+        setCurrentPage(1);
       }, 1000);
+      return () => clearTimeout(identifier);
     }
   }, [query, products]);
 
+  const changeQueryHandler =(event)=> {
+    
+  setQuery(event.target.value);
+  }
+
   const lastIndexOfProducts = currentPage * productsPerPage;
   const firstIndexOfProducts = lastIndexOfProducts - productsPerPage;
-  const currentProducts = filteredProducts.slice(firstIndexOfProducts, lastIndexOfProducts);
+  const currentProducts = filteredProducts.slice(
+    firstIndexOfProducts,
+    lastIndexOfProducts
+  );
 
   const onPaginateHandler = (page) => {
     setCurrentPage(page);
   };
 
-  console.log("query", query);
   return (
     <Layout>
-      <input
-        defaultValue={query}
-        placeholder="Type to search"
-        onChange={(event) => setQuery(event.target.value)}
-      ></input>
-      <Routes>
+       <Routes>
         <Route
           path="/"
           element={
@@ -71,6 +76,8 @@ function App() {
               currentProducts={currentProducts}
               productsPerPage={productsPerPage}
               onPaginate={onPaginateHandler}
+              query={query}
+              onChangeQuery={changeQueryHandler}
             />
           }
         />

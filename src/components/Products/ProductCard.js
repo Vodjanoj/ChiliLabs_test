@@ -21,7 +21,7 @@ const ProductCard = () => {
     filterProductDetailsById();
   }, [productId]);
 
-  const { category, name, price, description } = productsDetails || {};
+  const { category, name, price, currency, description } = productsDetails || {};
   return (
     <>
       {productsDetails ? (
@@ -29,6 +29,7 @@ const ProductCard = () => {
           <div>{category}</div>
           <div>{name}</div>
           <div>{price}</div>
+          <div>{currency}</div>
           <div>{description}</div>
         </>
       ) : (

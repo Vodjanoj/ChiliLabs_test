@@ -1,3 +1,17 @@
+import styled from "styled-components";
+import PageButton from "./PageButton";
+
+const StyledPagination = styled.div`
+  width: 100%;
+`;
+
+const StyledPaginationInner = styled.div`
+  width: 130px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+`;
+
 const Pagination = ({ products, productsPerPage, onPaginate }) => {
   const pages = [];
 
@@ -5,16 +19,12 @@ const Pagination = ({ products, productsPerPage, onPaginate }) => {
     pages.push(i);
   }
 
- 
-
   return (
-    <div>
-      <ul>
-        {pages.map((page) => (
-          <li onClick={() => onPaginate(page)}>{page}</li>
-        ))}
-      </ul>
-    </div>
+    <StyledPagination>
+      <StyledPaginationInner>
+        <PageButton pages={pages} onPaginate={onPaginate} />
+      </StyledPaginationInner>
+    </StyledPagination>
   );
 };
 

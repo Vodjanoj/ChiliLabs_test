@@ -2,6 +2,8 @@ import ProductItem from "./ProductItem";
 import styled from "styled-components";
 
 const ProductListWrapper = styled.div`
+  margin: 0 0 30px 0;
+  height:400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px 200px;
@@ -17,6 +19,7 @@ const ProductList = ({ currentProducts }) => {
           name={item.name}
           category={item.category}
           price={item.price}
+          currency={item.currency}
         />
       ))}
     </ProductListWrapper>

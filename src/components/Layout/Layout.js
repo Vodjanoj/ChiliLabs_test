@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledLayout = styled.main`
-  margin: 160px auto;
+  margin: 100px auto;
   padding: 0 5px;
   max-width: 1240px;
 `;
