@@ -12,7 +12,7 @@ const StyledPaginationInner = styled.div`
   justify-content: center;
 `;
 
-const Pagination = ({ products, productsPerPage, onPaginate }) => {
+const Pagination = ({ products, productsPerPage, onPaginate, currentPage }) => {
   const pages = [];
 
   for (let i = 1; i <= Math.ceil(products / productsPerPage); i++) {
@@ -22,7 +22,7 @@ const Pagination = ({ products, productsPerPage, onPaginate }) => {
   return (
     <StyledPagination>
       <StyledPaginationInner>
-        <PageButton pages={pages} onPaginate={onPaginate} />
+        <PageButton pages={pages} currentPage={currentPage} onPaginate={onPaginate} />
       </StyledPaginationInner>
     </StyledPagination>
   );

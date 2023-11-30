@@ -76,6 +76,7 @@ function App() {
               currentProducts={currentProducts}
               productsPerPage={productsPerPage}
               onPaginate={onPaginateHandler}
+              currentPage={currentPage}
               query={query}
               onChangeQuery={changeQueryHandler}
             />

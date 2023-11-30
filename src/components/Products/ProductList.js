@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ProductListWrapper = styled.div`
   margin: 0 0 30px 0;
-  height:400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px 200px;

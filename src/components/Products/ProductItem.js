@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const ProductItemWrapper = styled.div`
-  max-height: 125px;
   padding: 10px;
   background-color: #ffefd5;
   border-radius: 15px;
