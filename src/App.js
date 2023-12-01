@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import ProductCard from "./components/Products/ProductCard";
-import fetchProducts from "./components/Utils/fetchProducts";
+import { fetchProducts } from "./components/Utils/fetchProducts";
 import Products from "./components/Products/Products";
 
 function App() {

@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import fetchProducts from "../Utils/fetchProducts";
+import { fetchProducts } from "../Utils/fetchProducts";
 import styled from "styled-components";
+import {
+  ProductCategory,
+  ProductName,
+  ProductPrice,
+} from "./ProductItem/ProductItem.styles";
 
 const ProductDetailsWrapper = styled.div`
   padding: 10px;
-  background-color: #ffefd5;
+  background-color: #F5F5F5;
   border-radius: 15px;
+`;
+
+const ProductDescription = styled.div`
+  font-size: 16px;
 `;
 
 const ProductCard = () => {
@@ -34,11 +43,14 @@ const ProductCard = () => {
     <>
       {productsDetails ? (
         <ProductDetailsWrapper>
-          <div>{category}</div>
-          <div>{name}</div>
-          <div>{price}</div>
-          <div>{currency}</div>
-          <div>{description}</div>
+          <ProductCategory fontSize="23px">{category}</ProductCategory>
+          <ProductName fontSize="23px"> {name}</ProductName>
+          <ProductPrice margin='0 0 20px 0'>
+            <span>
+              {currency} {price}
+            </span>
+          </ProductPrice>
+          <ProductDescription>{description}</ProductDescription>
         </ProductDetailsWrapper>
       ) : (
         <div>Loading..</div>
