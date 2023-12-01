@@ -1,34 +1,26 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import ProductCard from "./components/Products/ProductCard";
 import { fetchProducts } from "./components/Utils/fetchProducts";
 import Products from "./components/Products/Products";
+import { Product } from "./components/components.types";
 
-function App() {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6);
-  const [query, setQuery] = useState("");
+const App = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [productsPerPage] = useState<number>(6);
+  const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
     const loadAllProducts = async () => {
       const result = await fetchProducts();
 
-      const transformedProducts = result.products.map((productData) => {
-        return {
-          id: productData.id,
-          name: productData.name,
-          price: productData.price,
-          currency: productData.currency,
-          category: productData.category,
-        };
-      });
+      setProducts(result.products);
 
-      setProducts(transformedProducts);
-
-      setFilteredProducts(transformedProducts);
+      setFilteredProducts(result.products);
     };
 
     loadAllProducts();
@@ -49,10 +41,9 @@ function App() {
     }
   }, [query, products]);
 
-  const changeQueryHandler =(event)=> {
-    
-  setQuery(event.target.value);
-  }
+  const changeQueryHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
 
   const lastIndexOfProducts = currentPage * productsPerPage;
   const firstIndexOfProducts = lastIndexOfProducts - productsPerPage;
@@ -61,13 +52,13 @@ function App() {
     lastIndexOfProducts
   );
 
-  const onPaginateHandler = (page) => {
+  const onPaginateHandler = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
     <Layout>
-       <Routes>
+      <Routes>
         <Route
           path="/"
           element={
@@ -86,6 +77,6 @@ function App() {
       </Routes>
     </Layout>
   );
-}
+};
 
 export default App;

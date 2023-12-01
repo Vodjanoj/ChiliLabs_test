@@ -16,7 +16,15 @@ const StyledInput = styled.div`
   }
 `;
 
-const SearchProducts = ({ query, onChangeQuery }) => {
+type SearchProductsProps = {
+  query: string,
+  onChangeQuery: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
+}
+
+const SearchProducts = (props:SearchProductsProps) => {
+
+  const {query, onChangeQuery} = props; 
   return (
     <StyledInput>
       <input

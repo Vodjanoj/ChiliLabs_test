@@ -6,7 +6,12 @@ const StyledLayout = styled.main`
   max-width: 1240px;
 `;
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: JSX.Element;
+}
+
+const Layout = (props: LayoutProps) => {
+  const { children } = props;
   return (
     <>
       <StyledLayout>{children}</StyledLayout>

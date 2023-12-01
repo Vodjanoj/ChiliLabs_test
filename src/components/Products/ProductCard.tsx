@@ -8,9 +8,11 @@ import {
   ProductPrice,
 } from "./ProductItem/ProductItem.styles";
 
+import { Product } from "../components.types";
+
 const ProductDetailsWrapper = styled.div`
   padding: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 15px;
 `;
 
@@ -19,19 +21,20 @@ const ProductDescription = styled.div`
 `;
 
 const ProductCard = () => {
-  const [productsDetails, setProductDetails] = useState(null);
+  const [productsDetails, setProductDetails] = useState<Product | null>(null);
 
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
 
   useEffect(() => {
     const filterProductDetailsById = async () => {
       const result = await fetchProducts();
+      if (productId) {
+        const filteredProductDetails = result.products.find(
+          (item: Product) => item.id === parseInt(productId)
+        );
 
-      const filteredProductDetails = result.products.find(
-        (item) => item.id === parseInt(productId)
-      );
-
-      setProductDetails(filteredProductDetails);
+        setProductDetails(filteredProductDetails);
+      }
     };
 
     filterProductDetailsById();
@@ -39,13 +42,14 @@ const ProductCard = () => {
 
   const { category, name, price, currency, description } =
     productsDetails || {};
+    
   return (
     <>
       {productsDetails ? (
         <ProductDetailsWrapper>
           <ProductCategory fontSize="23px">{category}</ProductCategory>
           <ProductName fontSize="23px"> {name}</ProductName>
-          <ProductPrice margin='0 0 20px 0'>
+          <ProductPrice margin="0 0 20px 0">
             <span>
               {currency} {price}
             </span>

@@ -1,5 +1,7 @@
+import React from "react";
 import ProductItem from "./ProductItem/ProductItem";
 import styled from "styled-components";
+import { Product } from "../components.types";
 
 const ProductListWrapper = styled.div`
   margin: 0 0 30px 0;
@@ -8,7 +10,12 @@ const ProductListWrapper = styled.div`
   grid-gap: 50px 200px;
 `;
 
-const ProductList = ({ currentProducts }) => {
+type ProductListProps = {
+  currentProducts: Product[];
+};
+
+const ProductList = (props: ProductListProps) => {
+  const { currentProducts } = props;
   return (
     <ProductListWrapper>
       {currentProducts.map((item, index) => (

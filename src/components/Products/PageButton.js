@@ -9,7 +9,7 @@ const Button = styled.button`
   line-height: 1.2;
   font-weight: 600;
   color: #ffffff;
-  background-color: ${(props) => (props.active ? "#3fa556" : "#5ece7b")};
+  background-color: ${(props) => (props.$isActive ? "#3fa556" : "#5ece7b")};
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
@@ -24,7 +24,7 @@ const PageButton = ({ pages, onPaginate, currentPage }) => {
           type="button"
           key={page}
           onClick={() => onPaginate(page)}
-          active={page === currentPage}
+          $isActive={page === currentPage}  
         >
           {page}
         </Button>
