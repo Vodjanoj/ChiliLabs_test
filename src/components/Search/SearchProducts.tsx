@@ -3,15 +3,16 @@ import styled from "styled-components";
 const StyledInput = styled.div`
   margin: 20px 0;
   input {
+    width: 100%;
     padding: 5px 10px;
     font: inherit;
-    font-size: 16px;
+    font-size: 15px;
     border: 0;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
     outline: none;
     &::placeholder {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 `;
@@ -30,7 +31,7 @@ const SearchProducts = (props:SearchProductsProps) => {
       <input
         type="text"
         value={query}
-        placeholder="Type to search"
+        placeholder="Type to search products by name or category"
         onChange={(event) => onChangeQuery(event)}
       ></input>
     </StyledInput>

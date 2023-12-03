@@ -47,9 +47,9 @@ const ProductCard = () => {
     <>
       {productsDetails ? (
         <ProductDetailsWrapper>
-          <ProductCategory fontSize="23px">{category}</ProductCategory>
-          <ProductName fontSize="23px"> {name}</ProductName>
-          <ProductPrice margin="0 0 20px 0">
+          <ProductCategory $fontSize="23px">{category}</ProductCategory>
+          <ProductName $fontSize="23px"> {name}</ProductName>
+          <ProductPrice $margin="0 0 20px 0">
             <span>
               {currency} {price}
             </span>

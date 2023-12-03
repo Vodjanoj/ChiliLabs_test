@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+interface ButtonProps {
+  $isActive: boolean;
+}
+
+const Button = styled.button<ButtonProps>`
   margin: 0 5px;
   padding: 5px 10px;
   border: none;
@@ -15,8 +19,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const PageButton = ({ pages, onPaginate, currentPage }) => {
-  console.log("currentPage", currentPage);
+type PaginationProps = {
+  pages: number[];
+  currentPage: number;
+  onPaginate: (page: number) => void;
+};
+
+const PageButton = (props:PaginationProps) => {
+  const { pages, currentPage, onPaginate } = props;
   return (
     <>
       {pages.map((page) => (
