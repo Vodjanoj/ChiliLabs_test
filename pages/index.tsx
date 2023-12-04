@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout/Layout";
-import ProductCard from "./card/[productId]";
 import { fetchProducts } from "../Utils/fetchProducts";
-import Products from "../components/Products";
+import Products from "../components/Products/Products";
+import SearchProducts from "../components/Search/SearchProducts";
+import Pagination from "../components/Pagination/Pagination";
 import { Product } from "../components/components.types";
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage] = useState<number>(6);
-  const [query, setQuery] = useState<string>('');
+  const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
     const loadAllProducts = async () => {
@@ -55,17 +55,18 @@ const HomePage = () => {
   };
 
   return (
-    <Layout>
-      <Products
-        products={filteredProducts}
-        currentProducts={currentProducts}
-        productsPerPage={productsPerPage}
-        onPaginate={onPaginateHandler}
-        currentPage={currentPage}
-        query={query}
-        onChangeQuery={changeQueryHandler}
-      />
-    </Layout>
+    <>
+      <SearchProducts query={query} onChangeQuery={changeQueryHandler} />
+      <Products currentProducts={currentProducts} />
+      {filteredProducts.length > 6 && (
+        <Pagination
+          productsAmount={filteredProducts.length}
+          productsPerPage={productsPerPage}
+          onPaginate={onPaginateHandler}
+          currentPage={currentPage}
+        />
+      )}
+    </>
   );
 };
 

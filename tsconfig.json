@@ -25,15 +25,15 @@
     "src",
     "src/@types",
     "components/Layout",
-    "pages/card/[productId]/index.tsx",
+    "pages/card/[productId].tsx",
     "Utils",
     "components/Search",
     "components/components.types.ts",
     "components/Products/ProductItem",
-    "components/Products/PageButton.tsx",
-    "components/Pagination.tsx",
-    "components/ProductList.tsx",
-    "components/Products.tsx"
+    "components/Pagination/PageButton.tsx",
+    "components/Pagination/Pagination.tsx",
+    "components/Products/ProductList.tsx",
+    "components/Products/Products.tsx"
 , "pages/index.tsx"  ],
   "exclude": [
     "node_modules"

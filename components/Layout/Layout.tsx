@@ -13,7 +13,6 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => (
   <>
-    
     <StyledLayout>{children}</StyledLayout>
   </>
 );
