@@ -20,7 +20,7 @@ This is a test project for Chili Labs company, it provides an overview of Next.j
 
 # Requirements
 
-- Implemented the project using Typescript and React.js.
+- Implemented the project using TypeScript and React.js.
 - Ensured a responsive design for optimal user experience on both desktop and mobile devices
 
 
