@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchProducts } from "../../Utils/fetchProducts";
 import styled from "styled-components";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 import {
   ProductCategory,
   ProductName,
@@ -21,18 +21,32 @@ const ProductDescription = styled.div`
 
 const ProductCard = () => {
   const [productsDetails, setProductDetails] = useState<Product | null>(null);
-
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [wrongIdError, setWrongIdError] = useState<string | null>(null);
   const { productId } = useRouter().query as { productId: string };
- 
+
   useEffect(() => {
     const filterProductDetailsById = async () => {
-      const result = await fetchProducts();
-      if (productId) {
-        const filteredProductDetails = result.products.find(
-          (item: Product) => item.id === parseInt(productId)
-        );
+      try {
+        const result = await fetchProducts();
+        if (productId) {
+          const filteredProductDetails = result.find(
+            (item: Product) => item.id === parseInt(productId)
+          );
 
-        setProductDetails(filteredProductDetails);
+          if (filteredProductDetails) {
+            setProductDetails(filteredProductDetails);
+          } else {
+            console.error(`Product with id ${productId} not found.`);
+            setWrongIdError(`Product with id ${productId} not found.`)
+          }
+        }
+        setLoading(false);
+      } catch (error) {
+        console.log((error as Error).message);
+        setError((error as Error).message)
+        setLoading(false);
       }
     };
 
@@ -41,23 +55,43 @@ const ProductCard = () => {
 
   const { category, name, price, currency, description } =
     productsDetails || {};
-    
+
+  if (loading) {
+    return (
+      <p style={{ display: "block", width: "200px", margin: "0 auto" }}>
+        Loading products..
+      </p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p style={{ display: "block", width: "400px", margin: "0 auto" }}>
+        Error: {error}
+      </p>
+    );
+  }
+
+  if (wrongIdError) {
+    return (
+      <p style={{ display: "block", width: "400px", margin: "0 auto" }}>
+        Error: {wrongIdError}
+      </p>
+    );
+  }
+
   return (
     <>
-      {productsDetails ? (
-        <ProductDetailsWrapper>
-          <ProductCategory $fontSize="23px">{category}</ProductCategory>
-          <ProductName $fontSize="23px"> {name}</ProductName>
-          <ProductPrice $margin="0 0 20px 0">
-            <span>
-              {currency} {price}
-            </span>
-          </ProductPrice>
-          <ProductDescription>{description}</ProductDescription>
-        </ProductDetailsWrapper>
-      ) : (
-        <div>Loading..</div>
-      )}
+      <ProductDetailsWrapper>
+        <ProductCategory $fontSize="23px">{category}</ProductCategory>
+        <ProductName $fontSize="23px"> {name}</ProductName>
+        <ProductPrice $margin="0 0 20px 0">
+          <span>
+            {currency} {price}
+          </span>
+        </ProductPrice>
+        <ProductDescription>{description}</ProductDescription>
+      </ProductDetailsWrapper>
     </>
   );
 };

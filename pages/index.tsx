@@ -12,12 +12,21 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage] = useState<number>(6);
   const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadAllProducts = async () => {
-      const result = await fetchProducts();
-      setProducts(result.products);
-      setFilteredProducts(result.products);
+      try {
+        const result = await fetchProducts();
+        setProducts(result);
+        setFilteredProducts(result);
+        setLoading(false);
+      } catch (error) {
+        console.log((error as Error).message);
+        setError((error as Error).message);
+        setLoading(false);
+      }
     };
 
     loadAllProducts();
@@ -54,6 +63,14 @@ const HomePage = () => {
     setCurrentPage(page);
   };
 
+  if (loading) {
+    return <p style={{display:"block", width: "200px", margin: "0 auto" }}>Loading products..</p>;
+  }
+
+  if (error) {
+    return <p style={{display:"block", width: "400px", margin: "0 auto" }}>Error: {error}</p>;
+  }
+
   return (
     <>
       <SearchProducts query={query} onChangeQuery={changeQueryHandler} />
@@ -66,6 +83,7 @@ const HomePage = () => {
           currentPage={currentPage}
         />
       )}
+      {filteredProducts.length === 0 && <div>Nothing found</div>}
     </>
   );
 };
