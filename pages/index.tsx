@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { useState, useEffect } from "react";
-import { fetchProducts } from "../Utils/fetchProducts";
+import { fetchProducts } from "../utils/fetchProducts";
 import Products from "../components/Products/Products";
 import SearchProducts from "../components/Search/SearchProducts";
 import Pagination from "../components/Pagination/Pagination";

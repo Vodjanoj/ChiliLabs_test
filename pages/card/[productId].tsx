@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchProducts } from "../../Utils/fetchProducts";
+import { fetchProducts } from "../../utils/fetchProducts";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import {
