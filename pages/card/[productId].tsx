@@ -3,19 +3,37 @@ import { fetchProducts } from "../../Utils/fetchProducts";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import {
-  ProductCategory,
-  ProductName,
-  ProductPrice,
-} from "../../components/Products/ProductItem/ProductItem.styles";
-import { Product } from "../../components/components.types";
+  StyledProductCategory,
+  StyledProductName,
+  StyledProductPrice,
+  StyledError,
+} from "../../styles/sharedStyles";
+import { Product } from "../../components/types/components.types";
 
-const ProductDetailsWrapper = styled.div`
+const StyledProductDetailsWrapper = styled.div.attrs(() => ({
+  // added for tests
+  role: "product-details",
+}))`
+  margin: 0 auto;
+  max-width: 900px;
   padding: 10px;
   background-color: #f5f5f5;
   border-radius: 15px;
+
+  @media (max-width: 991px) {
+    max-width: 700px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 500px;
+  }
+
+  @media (max-width: 414px) {
+    max-width: 390px;
+  }
 `;
 
-const ProductDescription = styled.div`
+const StyledProductDescription = styled.div`
   font-size: 16px;
 `;
 
@@ -31,21 +49,29 @@ const ProductCard = () => {
       try {
         const result = await fetchProducts();
         if (productId) {
-          const filteredProductDetails = result.find(
-            (item: Product) => item.id === parseInt(productId)
-          );
+          const parsedProductId = Number(productId);
 
-          if (filteredProductDetails) {
-            setProductDetails(filteredProductDetails);
+          if (!isNaN(parsedProductId) && Number.isInteger(parsedProductId)) {
+            const filteredProductDetails = result.find(
+              (item: Product) => item.id === parsedProductId
+            );
+
+            if (filteredProductDetails) {
+              setProductDetails(filteredProductDetails);
+            } else {
+              console.error(`Product with id ${parsedProductId} not found.`);
+              setWrongIdError(`Product with id ${parsedProductId} not found.`);
+            }
           } else {
-            console.error(`Product with id ${productId} not found.`);
-            setWrongIdError(`Product with id ${productId} not found.`)
+            // Handle case where productId is not a valid integer
+            console.log(`Invalid productId: ${productId}`);
+            setWrongIdError(`Invalid productId: ${productId}`);
           }
+          setLoading(false);
         }
-        setLoading(false);
       } catch (error) {
         console.log((error as Error).message);
-        setError((error as Error).message)
+        setError((error as Error).message);
         setLoading(false);
       }
     };
@@ -57,41 +83,31 @@ const ProductCard = () => {
     productsDetails || {};
 
   if (loading) {
-    return (
-      <p style={{ display: "block", width: "200px", margin: "0 auto" }}>
-        Loading products..
-      </p>
-    );
+    return <StyledError>Loading products..</StyledError>;
   }
 
   if (error) {
-    return (
-      <p style={{ display: "block", width: "400px", margin: "0 auto" }}>
-        Error: {error}
-      </p>
-    );
+    return <StyledError>Error: {error}</StyledError>;
   }
 
   if (wrongIdError) {
-    return (
-      <p style={{ display: "block", width: "400px", margin: "0 auto" }}>
-        Error: {wrongIdError}
-      </p>
-    );
+    return <StyledError>Error: {wrongIdError}</StyledError>;
   }
 
   return (
     <>
-      <ProductDetailsWrapper>
-        <ProductCategory $fontSize="23px">{category}</ProductCategory>
-        <ProductName $fontSize="23px"> {name}</ProductName>
-        <ProductPrice $margin="0 0 20px 0">
+      <StyledProductDetailsWrapper>
+        <StyledProductCategory $fontSize="23px">
+          {category}
+        </StyledProductCategory>
+        <StyledProductName $fontSize="23px"> {name}</StyledProductName>
+        <StyledProductPrice $margin="0 0 20px 0">
           <span>
             {currency} {price}
           </span>
-        </ProductPrice>
-        <ProductDescription>{description}</ProductDescription>
-      </ProductDetailsWrapper>
+        </StyledProductPrice>
+        <StyledProductDescription>{description}</StyledProductDescription>
+      </StyledProductDetailsWrapper>
     </>
   );
 };

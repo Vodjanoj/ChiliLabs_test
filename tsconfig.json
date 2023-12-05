@@ -28,13 +28,13 @@
     "pages/card/[productId].tsx",
     "Utils",
     "components/Search",
-    "components/components.types.ts",
+    "components/types/components.types.ts",
     "components/Products/ProductItem",
     "components/Pagination/PageButton.tsx",
     "components/Pagination/Pagination.tsx",
     "components/Products/ProductList.tsx",
     "components/Products/Products.tsx"
-, "pages/index.tsx"  ],
+, "pages/index.tsx", "styles/sharedStyles.tsx", "components/Products/ProductItem.tsx"  ],
   "exclude": [
     "node_modules"
   ]

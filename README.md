@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Next.js Product List Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a test project for Chili Labs company, it provides an overview of Next.js by implementing a product list page with various features and enhancements. The primary tasks include fetching products from an external API, implementing search functionality, and creating a product details page.<br /><br />
 
-## Available Scripts
+# Main Tasks 
 
-In the project directory, you can run:
+## Product List Page 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Fetched products from the API endpoint.
+2. Implemented a search input that dynamically filters products without requiring a page refresh.
+3. Enabled automatic search functionality, triggering once the user stops typing.
+4. Displayed essential product details, including name, price, and category.
+5. Implemented redirection to the product details page when clicking on a product.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Product Details Page
 
-### `npm test`
+- Created a product details page to showcase additional information such as name, price, category, and description.
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Requirements
 
-### `npm run build`
+- Implemented the project using Typescript and React.js.
+- Ensured a responsive design for optimal user experience on both desktop and mobile devices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Bonus Points
+ - Utilized the Styled Components for efficient and maintainable styling.
+ - Updated project to Next.js for enhanced project structure and performance.
+ - Implemented pagination for an improved user experience.
+ - Conducted some unit tests using @testing-library/react to ensure code reliability.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone this repository
+2. Install dependencies using `npm install`
+3. Run the application using `npm run dev`<br />

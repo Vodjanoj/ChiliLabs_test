@@ -4,7 +4,7 @@ interface ButtonProps {
   $isActive: boolean;
 }
 
-const Button = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps>`
   margin: 0 5px;
   padding: 5px 10px;
   border: none;
@@ -30,14 +30,14 @@ const PageButton = (props:PaginationProps) => {
   return (
     <>
       {pages.map((page) => (
-        <Button
+        <StyledButton
           type="button"
           key={page}
           onClick={() => onPaginate(page)}
           $isActive={page === currentPage}  
         >
           {page}
-        </Button>
+        </StyledButton>
       ))}
     </>
   );

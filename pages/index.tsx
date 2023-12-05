@@ -4,7 +4,8 @@ import { fetchProducts } from "../Utils/fetchProducts";
 import Products from "../components/Products/Products";
 import SearchProducts from "../components/Search/SearchProducts";
 import Pagination from "../components/Pagination/Pagination";
-import { Product } from "../components/components.types";
+import { Product } from "../components/types/components.types";
+import { StyledError } from ".././styles/sharedStyles";
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -64,11 +65,11 @@ const HomePage = () => {
   };
 
   if (loading) {
-    return <p style={{display:"block", width: "200px", margin: "0 auto" }}>Loading products..</p>;
+    return <StyledError>Loading products..</StyledError>;
   }
 
   if (error) {
-    return <p style={{display:"block", width: "400px", margin: "0 auto" }}>Error: {error}</p>;
+    return <StyledError>Error: {error}</StyledError>;
   }
 
   return (

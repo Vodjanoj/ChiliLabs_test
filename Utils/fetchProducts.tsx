@@ -1,4 +1,4 @@
-import { Product } from "../components/components.types";
+import { Product } from "../components/types/components.types";
 
 export const fetchProducts = async (): Promise<Product[]> => {
   const response = await fetch(
