@@ -12,7 +12,7 @@ interface StyledProductPriceProps {
   $margin?: string;
 }
 
-const StyledProductCategory = styled.div<StyledProductCategoryProps>`
+const StyledProductCategory = styled.h3<StyledProductCategoryProps>`
   margin: 0 0 10px 0;
   font-weight: 600;
   text-decoration: none;

@@ -24,7 +24,7 @@ const StyledProductsWrapper = styled.div`
   @media (max-width: 414px) {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 20px 0;
-  }
+    justify-items: center;
 `;
 
 type ProductsProps = {

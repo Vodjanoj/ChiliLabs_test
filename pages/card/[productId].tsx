@@ -33,7 +33,7 @@ const StyledProductDetailsWrapper = styled.div.attrs(() => ({
   }
 `;
 
-const StyledProductDescription = styled.div`
+const StyledProductDescription = styled.p`
   font-size: 16px;
 `;
 

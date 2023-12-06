@@ -7,13 +7,16 @@ import {
   StyledProductPrice,
 } from "../../styles/sharedStyles";
 
-const StyledProductWrapper = styled.div`
+const StyledProductWrapper = styled.article`
   padding: 10px;
   background-color: #f5f5f5;
   border-radius: 15px;
   &:hover {
     box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
   }
+
+  @media (max-width: 414px) {
+    min-width:220px;
 `;
 
 const StyledLink = styled(Link)`
