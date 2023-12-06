@@ -83,7 +83,7 @@ const ProductCard = () => {
     productsDetails || {};
 
   if (loading) {
-    return <StyledError>Loading products..</StyledError>;
+    return <StyledError>Loading product details..</StyledError>;
   }
 
   if (error) {
