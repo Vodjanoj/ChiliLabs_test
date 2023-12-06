@@ -5,7 +5,7 @@ import Products from "../components/Products/Products";
 import SearchProducts from "../components/Search/SearchProducts";
 import Pagination from "../components/Pagination/Pagination";
 import { Product } from "../components/types/components.types";
-import { StyledError } from ".././styles/sharedStyles";
+import { StyledError } from "../styles/sharedStyles";
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);

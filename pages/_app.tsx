@@ -1,6 +1,7 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout/Layout";
+import "../styles/reset.css";
 import "../styles/globals.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
