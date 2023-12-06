@@ -84,7 +84,7 @@ const HomePage = () => {
           currentPage={currentPage}
         />
       )}
-      {filteredProducts.length === 0 && <div>Nothing found</div>}
+      {filteredProducts.length === 0 && <div>No products found</div>}
     </>
   );
 };
