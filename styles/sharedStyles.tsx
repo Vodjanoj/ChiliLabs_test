@@ -32,9 +32,12 @@ const StyledProductPrice = styled.div<StyledProductPriceProps>`
 `;
 
 const StyledError = styled.p`
-  display: block;
-  width: 400px;
-  margin: 0 auto;
+  display: flex;
+  justify-content:center;
+`;
+const StyledLoading = styled.p`
+  display: flex;
+  justify-content:center;
 `;
 
 export {
@@ -42,4 +45,5 @@ export {
   StyledProductName,
   StyledProductPrice,
   StyledError,
+  StyledLoading
 };

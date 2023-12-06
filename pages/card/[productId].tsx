@@ -7,6 +7,7 @@ import {
   StyledProductName,
   StyledProductPrice,
   StyledError,
+  StyledLoading
 } from "../../styles/sharedStyles";
 import { Product } from "../../components/types/components.types";
 
@@ -83,7 +84,7 @@ const ProductCard = () => {
     productsDetails || {};
 
   if (loading) {
-    return <StyledError>Loading product details..</StyledError>;
+    return <StyledLoading>Loading product details..</StyledLoading>;
   }
 
   if (error) {
