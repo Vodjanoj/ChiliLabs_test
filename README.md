@@ -11,6 +11,7 @@ This project provides an overview of Next.js by implementing a product list page
 3. Enabled automatic search functionality, triggering once the user stops typing.
 4. Displayed essential product details, including name, price, and category.
 5. Implemented redirection to the product details page when clicking on a product.
+6. Implemented pagination for an improved user experience.
 
 ## Product Details Page
 
@@ -23,7 +24,6 @@ This project provides an overview of Next.js by implementing a product list page
 - Ensured a responsive design for optimal user experience on both desktop and mobile devices
  - Utilized the Styled Components for efficient and maintainable styling.
  - Updated project to Next.js for enhanced project structure and performance.
- - Implemented pagination for an improved user experience.
  - Conducted some unit tests using @testing-library/react to ensure code reliability.
 
 ## Getting Started
