@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface ButtonProps {
+type ButtonProps = {
   $isActive: boolean;
 }
 

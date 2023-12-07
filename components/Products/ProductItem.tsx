@@ -36,8 +36,8 @@ const ProductItem = (props: ProductItemProps) => {
   const { id, name, category, currency, price } = props;
   return (
     <StyledProductWrapper>
-      <StyledLink href={`/card/${id}`} passHref>
-        <StyledProductCategory>{category} </StyledProductCategory>
+      <StyledLink href={`/card/${id}`}>
+        <StyledProductCategory>{category}</StyledProductCategory>
         <StyledProductName>{name}</StyledProductName>
         <StyledProductPrice>
           <span>
