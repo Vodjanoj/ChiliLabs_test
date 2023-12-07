@@ -1,8 +1,7 @@
 # Product List
 
-This is a test project for Chili Labs company, it provides an overview of Next.js by implementing a product list page with various features and enhancements. The primary tasks include fetching products from an external API, implementing search functionality, and creating a product details page.<br /><br />
+This project provides an overview of Next.js by implementing a product list page with various features and enhancements.<br /><br />
 
-# Main Tasks 
 
 ## Product List Page 
 
@@ -18,12 +17,10 @@ This is a test project for Chili Labs company, it provides an overview of Next.j
 - Created a product details page to showcase additional information such as name, price, category, and description.
 <br />
 
-# Requirements
+# Project Overview
 
 - Implemented the project using TypeScript and React.js.
 - Ensured a responsive design for optimal user experience on both desktop and mobile devices
-
-## Bonus Points
  - Utilized the Styled Components for efficient and maintainable styling.
  - Updated project to Next.js for enhanced project structure and performance.
  - Implemented pagination for an improved user experience.
@@ -33,4 +30,5 @@ This is a test project for Chili Labs company, it provides an overview of Next.j
 
 1. Clone this repository
 2. Install dependencies using `npm install`
-3. Run the application using `npm run dev`<br />
+3. Run the application using `npm run dev`
+4. Run tests `npm test`<br />
