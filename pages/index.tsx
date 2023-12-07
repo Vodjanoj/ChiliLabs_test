@@ -5,7 +5,7 @@ import Products from "../components/Products/Products";
 import SearchProducts from "../components/Search/SearchProducts";
 import Pagination from "../components/Pagination/Pagination";
 import { Product } from "../components/types/components.types";
-import { StyledError, StyledLoading} from "../styles/sharedStyles";
+import { StyledError, StyledLoading } from "../styles/sharedStyles";
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -75,16 +75,14 @@ const HomePage = () => {
   return (
     <>
       <SearchProducts query={query} onChangeQuery={changeQueryHandler} />
-      <Products currentProducts={currentProducts} />
-      {filteredProducts.length > 6 && (
-        <Pagination
-          productsAmount={filteredProducts.length}
-          productsPerPage={productsPerPage}
-          onPaginate={onPaginateHandler}
-          currentPage={currentPage}
-        />
-      )}
       {filteredProducts.length === 0 && <div>No products found</div>}
+      <Products currentProducts={currentProducts} />
+      <Pagination
+        productsAmount={filteredProducts.length}
+        productsPerPage={productsPerPage}
+        onPaginate={onPaginateHandler}
+        currentPage={currentPage}
+      />
     </>
   );
 };
